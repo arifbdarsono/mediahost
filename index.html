@@ -4,15 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-/* Style the tab */
+/* Style the fixed sidebar */
 .tab {
-  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  width: 30%;
-  height: 300px;
+  width: 250px;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 /* Style the buttons inside the tab */
@@ -40,41 +48,76 @@ body {font-family: "Lato", sans-serif;}
   background-color: #ccc;
 }
 
+/* Main content area */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
 /* Style the tab content */
 .tabcontent {
-  float: left;
-  padding: 0px 12px;
+  display: none;
+  padding: 20px;
   border: 1px solid #ccc;
-  width: 70%;
-  border-left: none;
-  height: 300px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .tab {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tab button {
+    display: inline-block;
+    width: auto;
+    padding: 10px 15px;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
 }
 </style>
 </head>
 <body>
 
-<h2>Vertical Tabs</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
-
+<!-- Fixed Sidebar -->
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
   <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
 </div>
 
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
-</div>
+<!-- Main Content Area -->
+<div class="main-content">
+  <h2>Fixed Sidebar Navigation</h2>
+  <p>Click on the buttons in the sidebar to navigate:</p>
 
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
+  <div id="London" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+    <p>This content is now displayed in the main area with a fixed sidebar navigation.</p>
+  </div>
 
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <div id="Paris" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p>
+    <p>The sidebar remains fixed while you scroll through this content area.</p>
+  </div>
+
+  <div id="Tokyo" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+    <p>You can add more content here and the sidebar will always be accessible.</p>
+  </div>
 </div>
 
 <script>
